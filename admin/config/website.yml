@@ -1,0 +1,10 @@
+---
+title: "Little REX/YAML blog"
+motto: "Where the dreams come true"
+home: "../index.html"
+year: 2015
+owner: "YOUR NAME HERE"
+contact:
+  mail: YOUR@MAIL.COM
+  phone: 555-3321
+...

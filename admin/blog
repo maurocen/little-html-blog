@@ -1,0 +1,76 @@
+package post;
+use strict;
+use Smart::Comments;
+use common::sense;
+use Config::Merge('CONFIG' => './config');
+use Config::Merge('POSTS' => './posts');
+use CONFIG;
+use Template;
+use Rex -feature => ['1.0'];
+
+task 'process', sub {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone("files");
+  foreach (values $files) {
+    say "Creating $_...";
+    my $config = {file => $_};
+    create_entry($config);
+    say "DONE";
+  };
+  create_index();
+  create_about();
+};
+
+sub create_entry {
+  use CONFIG;
+  use POSTS;
+  my $params =shift;
+  my $postfile = $params->{file};
+  my $post = POSTS::clone($postfile);
+  my $recentposts = POSTS::clone('recent');
+  my $site = CONFIG::clone('website');
+  my $template = Template->new({
+
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../posts",
+  });
+  my $postinfo = {post => $post, website => $site, config => $recentposts};
+  $template->process('post.html', $postinfo , "$post->{filename}.html");
+};
+
+sub create_index {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone('files');
+  my $site = CONFIG::clone('website');
+  say "Creating index.html ...";
+  my $template = Template->new({
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../",
+  });
+  my $index_config = {config => $files, website => $site};
+  $template->process('index.html', $index_config , "index.html");
+  say "DONE";
+};
+
+sub create_about {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone('files');
+  my $site = CONFIG::clone('website');
+  my $about = CONFIG::clone('about');
+  say "Creating about.html ...";
+  my $template = Template->new({
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../",
+  });
+  my $index_config = {config => $files, website => $site, about => $about};
+  $template->process('about.html', $index_config , "about.html");
+  say "DONE";
+};
+
+# THIS IS A
+# Little REX/HTML blog
+# AND
+# Mauro Centurion did this, but you can feel free to modify this code!

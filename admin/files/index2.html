@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>[% website.title %] - [% post.title%]</title>
+</head>
+<body>
+<FONT FACE="arial">
+<h1 align="center">[% website.title %]</h1>
+<h6 align="center"><i>[% website.motto %]</i></h6>
+<HR size="4" width="75%"></HR>
+<h2 align="center">List of recent entries</h2>
+[% FOREACH entry IN config %]
+&#126;&#62; <a href="posts/[% entry %].html">[% entry %]</a><br>
+[% END%]
+<HR size="4" width="75%"></HR>
+<h6 align="center">&copy; [% website.year %] [% website.owner %] - All rights reserved.</h6>
+</FONT>
+</body>
+</html>

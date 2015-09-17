@@ -1,0 +1,14 @@
+1.1.0:
+  NEW:
+    - Added sidebar.
+    - Added about.html.
+    - Now posts are separated from blog config.
+    - Slight visual modifications.
+    - Old index.html and post.html templates are now index2.html and post2.html
+  BUGS:
+    - Subroutine post::C redefined warnings when running post:process
+1.0.1:
+  NEW:
+    - Creates index.html and posts html files.
+  BUGS:
+    - First post and last post have no previous or last respectively so they redirect to index.html 

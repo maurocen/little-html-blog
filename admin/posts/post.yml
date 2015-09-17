@@ -1,0 +1,11 @@
+---
+title: Post 1
+author:
+  name: YOUR NAME
+  mail:
+    address:YOUR@MAIL.COM
+postdate: "17/09/2015"
+content: "So, apparently, I could make this work.<p>I'm pretty suprised as how little time it took me to code this simple blogsite, and I'm quite proud of myself."
+next: anotherpost.html
+filename: "post"
+...

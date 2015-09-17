@@ -1,0 +1,10 @@
+<style>
+#sidebar{width:250px;height:auto;box-shadow:#0e0e0e 0 0 2px 0;}
+</style>
+
+<div style="menu-post">
+	<div class="widget"><h3>Recent entries</h3></div>
+		[% FOREACH elem IN config %]
+		<br>&#126;&#62; <a href="[% elem %].html">[% elem %]</a></li>
+		[% END %]
+</div>
