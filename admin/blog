@@ -20,6 +20,7 @@ task 'process', sub {
   };
   create_index();
   create_about();
+  create_template();
 };
 
 sub create_entry {
@@ -67,6 +68,21 @@ sub create_about {
   });
   my $index_config = {config => $files, website => $site, about => $about};
   $template->process('about.html', $index_config , "about.html");
+  say "DONE";
+};
+
+sub create_template {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone('files');
+  my $site = CONFIG::clone('website');
+  say "Creating about.html ...";
+  my $template = Template->new({
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../",
+  });
+  my $index_config = {config => $files, website => $site};
+  $template->process('template.html', $index_config , "template.html");
   say "DONE";
 };
 
