@@ -21,6 +21,7 @@ task 'process', sub {
   create_index();
   create_about();
   create_template();
+  copy_css();
 };
 
 sub create_entry {
@@ -108,6 +109,10 @@ sub interprete_content {
   }
   return $content;
 };
+
+sub copy_css {
+  file "../style.css", source => "config/style.css";
+}
 
 # THIS IS A
 # Little REX/HTML blog
