@@ -5,7 +5,7 @@ author:
   mail:
     address:YOUR@MAIL.COM
 postdate: "17/09/2015"
-content: "This is another post entry, to check I can make this work."
+content: '[yt]https://www.youtube.com/watch?v=yvHYWD29ZNY[/yt]\\[yt]https://www.youtube.com/watch?t=217&v=KnL2RJZTdA4[/yt]\\'
 previous: post.html
 next: thirdpost.html
 filename: anotherpost

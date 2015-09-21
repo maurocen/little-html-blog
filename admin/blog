@@ -21,6 +21,7 @@ task 'process', sub {
   create_index();
   create_about();
   create_template();
+  copy_css();
 };
 
 sub create_entry {
@@ -29,6 +30,7 @@ sub create_entry {
   my $params =shift;
   my $postfile = $params->{file};
   my $post = POSTS::clone($postfile);
+  $post->{content} = interprete_content($post->{content});
   my $recentposts = POSTS::clone('recent');
   my $site = CONFIG::clone('website');
   my $template = Template->new({
@@ -85,6 +87,32 @@ sub create_template {
   $template->process('template.html', $index_config , "template.html");
   say "DONE";
 };
+
+sub interprete_content {
+  my $content = shift;
+  if ($content =~ /\[yt\](.*&?\??v=[\w\d]+)[^\\]\[\/yt\]/){  
+    ### saf
+    $content =~ s/\[yt\](.*&?\??v=([\w\d]+))[^\\]\[\/yt\]/\<iframe width=\"560\" height=\"315\" src=\"https\:\/\/www\.youtube\.com\/embed\/$1\" frameborder=\"0\" allowfullscreen\>\<\/iframe\>/g;
+    ### $content
+  };
+  if ($content =~ /\[align=\".*\"\].*\[\/align\]/){  
+    $content =~ s/\[align=\"(.*)\"\](.*)\[\/align\]/\<div align=\"$1\">$2\<\/div\>/g;
+  };
+  map {if ($content =~ /\[$_].*\[\/$_\]/){  
+    $content =~ s/\[$_\](.*)\[\/$_\]/\<$_\>$1\<\/$_\>/g;
+  };} qw/b i u/;
+  if ($content =~ /\[img].*\[\/img\]/){  
+    $content =~ s/\[img\](.*)\[\/img\]/\<img src=\"$1"\>/g;
+  };
+  if ($content =~ /\[url=\".*\"\].*\[\/url\]/) {
+    $content =~ s/\[url=\"(.*)\"\](.*)\[\/url\]/\<a href=\"$1\">$2\<\/a\>/g;
+  }
+  return $content;
+};
+
+sub copy_css {
+  file "../style.css", source => "config/style.css";
+}
 
 # THIS IS A
 # Little REX/HTML blog
