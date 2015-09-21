@@ -1,3 +1,12 @@
+1.1.1:
+  NEW:
+    - More visual modifications.
+    - Standard dimensions (apparently).
+    - Added template.html to have a template for new posts.
+    - Added some code interpreters.
+  BUGS:
+    - Subroutine post::C redefined warnings when running post:process
+    - The code interpreters don't work correctly when parsing more than one instance of the tag.
 1.1.0:
   NEW:
     - Added sidebar.
