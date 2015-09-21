@@ -15,26 +15,42 @@ hr {
   background-color: teal;
   height: 3px;
 }
+#sidebar {
+  border-left-width: 0px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  border-right-width: 1px;
+}
+#sidebar-element {
+  text-align: left;
+    text-decoration: none;
+    color: white;
+    border-radius: 25px;
+    background-color: teal;
+    text-indent: 10px;
+}
 </style>
 </head>
+<body>
 <body>
 <FONT FACE="arial">
 <table cellpadding="5" width="100%" align="middle">
 <tr>
   <td id="sidebar" width="10%" bgcolor="#eeeeee">
-      <div class="posts"><h3>Recent entries</h3></div>
-		[% FOREACH elem IN config %]
-		<br>&#126;&#62; <a href="posts/[% elem %].html">[% elem %]</a></li>
-		[% END %]
-	  [% IF website.contact %]	
-	  <div class="contact"><h3>Contact</h3></div>
-	  [% IF website.contact.mail %]	
-	  	&#126;&#62;<a href="mailto:[% website.contact.mail %]">Mail us!</a>
-	  [% END %]
-	  [% IF website.contact.phone %]
-	  	&#126;&#62;<a href="tel:[% website.contact.phone %]">Call us!</a>
-	  [% END %]
-	  [% END %]
+      <div id="sidebar-element"><h5>Recent entries</h5></div>
+    [% FOREACH elem IN config %]
+    <br>&#126;&#62; <a href="posts/[% elem %].html">[% elem %]</a></li>
+    [% END %]
+    [% IF website.contact %]  
+    <div id="sidebar-element"><h5>Contact</h5></div>
+    [% IF website.contact.mail %] 
+      &#126;&#62;<a href="mailto:[% website.contact.mail %]">Mail us!</a>
+    [% END %]
+    [% IF website.contact.phone %]
+      &#126;&#62;<a href="tel:[% website.contact.phone %]">Call us!</a>
+    [% END %]
+    [% END %]
   </td>
   <td>
     <div id="header">
