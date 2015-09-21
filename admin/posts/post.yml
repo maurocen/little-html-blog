@@ -5,7 +5,7 @@ author:
   mail:
     address:YOUR@MAIL.COM
 postdate: "17/09/2015"
-content: "So, apparently, I could make this work.<p>I'm pretty suprised as how little time it took me to code this simple blogsite, and I'm quite proud of myself."
+content: "So, apparently, [b]I[/b] [b]could[/b] make this work.<p>I'm pretty suprised as how little time it took me to code this simple blogsite, and I'm quite proud of myself.[n]newline.[n]another new line.[n]asd[b]asd[/b][b] asdasd[/b]"
 next: anotherpost.html
 filename: "post"
 ...
