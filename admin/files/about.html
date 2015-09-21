@@ -1,47 +1,34 @@
 <html>
 <head>
 <title>[% website.title %] - [% post.title%]</title>
-<style>
-h1 {
-    color:teal;
-    font-family:verdana;
-    font-size:300%;
-}
-a {
-	text-decoration: none
-}
-hr {
-  color: teal;
-  background-color: teal;
-  height: 3px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<body>
 <body>
 <FONT FACE="arial">
 <table cellpadding="5" width="100%" align="middle">
 <tr>
-  <td id="sidebar" width="10%" bgcolor="#eeeeee">
-      <div class="posts"><h3>Recent entries</h3></div>
-		[% FOREACH elem IN config %]
-		<br>&#126;&#62; <a href="posts/[% elem %].html">[% elem %]</a></li>
-		[% END %]
-	  [% IF website.contact %]	
-	  <div class="contact"><h3>Contact</h3></div>
-	  [% IF website.contact.mail %]	
-	  	&#126;&#62;<a href="mailto:[% website.contact.mail %]">Mail us!</a>
-	  [% END %]
-	  [% IF website.contact.phone %]
-	  	&#126;&#62;<a href="tel:[% website.contact.phone %]">Call us!</a>
-	  [% END %]
-	  [% END %]
+  <td id="sidebar" width="12%">
+      <div id="sidebar-element"><h5>Recent entries</h5></div>
+    [% FOREACH elem IN config %]
+    &#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li><br>
+    [% END %]
+    [% IF website.contact %]  
+    <div id="sidebar-element"><h5>Contact</h5></div>
+    [% IF website.contact.mail %] 
+      &#126;&#62;<a class="menu" href="mailto:[% website.contact.mail %]">Mail us!</a><br>
+    [% END %]
+    [% IF website.contact.phone %]
+      &#126;&#62;<a class="menu" href="tel:[% website.contact.phone %]">Call us!</a>
+    [% END %]
+    [% END %]
   </td>
   <td>
     <div id="header">
     	<h1 align="center" >[% website.title %]</h1>
-		<h6 align="center"><i>[% website.motto %]</i></h6>
+		<h6 class="motto" align="center"><i>[% website.motto %]</i></h6>
 		<HR size="4" width="75%"></HR></div>
-    <div id="content">
+    <div id="content" style="height:60%">
     	<h2 align="center">About this blog!</h2>
     	This is version <text style="text-decoration: line-through">[% about.last_version %]</text> [% about.version %].<br>
     	This version was released on [% about.release %].<p>

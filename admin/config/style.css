@@ -1,0 +1,70 @@
+body {
+  height: 100%; margin: 0;
+  overflow: hidden;
+}
+table {height: 100%}
+h1 {
+  color:white;
+  font-family:verdana;
+  font-size:300%;
+  background-color: teal;
+  border-radius: 20px;
+}
+h1:hover {
+  color: teal;
+  background-color: #eeeeee;
+  letter-spacing: 10px;
+  background-size: 200%;
+}
+a {
+	text-decoration: none
+}
+hr {
+  color: teal;
+  background-color: teal;
+  height: 3px;
+}
+a.menu:visited {
+  color: black;
+}
+a.menu:hover {
+  color: white;
+  background-color: teal;
+  border: 1px;
+  letter-spacing: 1px;
+}
+h6.motto:hover {
+  letter-spacing: 2px;
+}
+#sidebar {
+	border-left-width: 0px;
+	border-style: solid;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	border-right-width: 3px;
+  background-color: #eeeeee;
+  border-radius: 25px;
+  height: 100%;
+}
+#sidebar-element {
+	text-align: left;
+  text-decoration: none;
+  color: white;
+  border-radius: 25px;
+  background-color: teal;
+  text-indent: 10px;
+}
+#header {
+  height:15%;
+}
+#content {
+  height:50%;
+  overflow: auto;
+}
+#author  {
+  height:10%;
+  overflow: hidden;
+}
+#footer {
+  height:10%;
+}
