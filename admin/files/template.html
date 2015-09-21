@@ -8,10 +8,10 @@
 <FONT FACE="arial">
 <table cellpadding="5" width="100%" align="middle">
 <tr>
-  <td id="sidebar" width="12%">
+  <td id="sidebar" width="12%" float="left">
       <div id="sidebar-element"><h5>Recent entries</h5></div>
 		[% FOREACH elem IN config %]
-		<br>&#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li>
+		&#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li><br>
 		[% END %]
 	  [% IF website.contact %]	
 	  <div id="sidebar-element"><h5>Contact</h5></div>
@@ -28,7 +28,7 @@
     	<h1 align="center" >[% website.title %]</h1>
 		<h6 class="motto" align="center"><i>[% website.motto %]</i></h6>
 		<HR size="4" width="75%"></HR></div>
-    <div id="content">
+    <div id="content" style="height:60%">
     	<h3 align="center">Create your post</h3>
 		<p></p>
 		<div align="center"><textarea rows="12" cols="50" readonly="true" id="noresize">---
