@@ -11,7 +11,7 @@
   <td id="sidebar" width="12%">
       <div id="sidebar-element"><h5>Recent entries</h5></div>
 		[% FOREACH elem IN config %]
-		<br>&#126;&#62; <a class="menu" href="[% elem %].html">[% elem %]</a></li>
+		&#126;&#62; <a class="menu" href="[% elem %].html">[% elem %]</a></li><br>
 		[% END %]
 	  [% IF website.contact %]	
 	  <div id="sidebar-element"><h5>Contact</h5></div>
@@ -37,6 +37,8 @@
 		[% post.content %]
 		<br></br>
 		<br></br>
+	</div>
+	<div id="author">
 		<h4 align="right">Author: [% post.author.name %]</h4>
 		<h6 align="right">[% IF post.author.mail %]<i><a href="mailto:[% post.author.mail.address %]">Contact the author</a></i>[% END %]</h6>
     </div>	

@@ -10,7 +10,7 @@
   <td id="sidebar" width="12%" height="100%">
       <div id="sidebar-element"><h5>Recent entries</h5></div>
 		[% FOREACH elem IN config %]
-		<br>&#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li>
+		&#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li><br>
 		[% END %]
 	  [% IF website.contact %]	
 	  <div id="sidebar-element"><h5>Contact</h5></div>
@@ -27,7 +27,7 @@
     	<h1 align="center" >[% website.title %]</h1>
 		<h6 class="motto" align="center"><i>[% website.motto %]</i></h6>
 		<HR size="4" width="75%"></HR></div>
-    <div id="content">
+    <div id="content" style="height:60%">
     	<h2 align="center">List of recent entries</h2>
 		[% FOREACH entry IN config %]
 		&#126;&#62; <a href="posts/[% entry %].html" >[% entry %]</a><br>
