@@ -90,22 +90,33 @@ sub create_template {
 
 sub interprete_content {
   my $content = shift;
+  #---- BOLD ITALIC UNDERLINE ----#
   map {if ($content =~ /\[$_\]/){  
     $content =~ s/\[$_\]/\<$_\>/g;
     $content =~ s/\[\/$_\]/\<\/$_\>/g;
   };} qw/b i u/;
+  #---- ALIGNMENT ----#
   if ($content =~ /\[align=\s*\"\w*\"\]/)
   {
   	$content =~ s/\[align=\s*\"(\w*)\"\]/<div align\=\"$1\">/g;
   	$content =~ s/\[\/align\]/<\/div>/g;
   }
+  #---- IMAGES ----#
   if ($content =~ /\[img].*\[\/img\]/){  
     $content =~ s/\[img\]([^\[]*)\[\/img\]/\<img src=\"$1"\>/g;
   };
+  #---- URL LINKING ----#
   if ($content =~ /\[url=\".*\"\].*\[\/url\]/) {
     $content =~ s/\[url=\"(.*)\"\]([^\[]*)\[\/url\]/\<a href=\"$1\">$2\<\/a\>/g;
   }
-  $content =~ s/\[n\]/<br>/g;
+  #---- NEWLINE ----#
+  if ($content =~ /\[n\]/) {
+    $content =~ s/\[n\]/<br>/g;
+  };
+  #---- YOUTUBE ----#
+  if ($content =~ /\[yt\]/) {
+    $content =~ s/\[yt\]([^[]*)\[\/yt]/<iframe width="560" height="315" src="https:\/\/www.youtube.com\/embed\/$1" frameborder="0" allowfullscreen><\/iframe>/g;
+  };
   return $content;
 };
 
