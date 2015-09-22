@@ -44,6 +44,7 @@ h6.motto:hover {
   background-color: #eeeeee;
   border-radius: 25px;
   height: 100%;
+  vertical-align: top;
 }
 #sidebar-element {
 	text-align: left;
