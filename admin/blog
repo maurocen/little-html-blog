@@ -90,9 +90,6 @@ sub create_template {
 
 sub interprete_content {
   my $content = shift;
-  if ($content =~ /\[yt\].*\?v=([\w\d]*)[^\[]\[\/yt\]/){
-    $content =~ s/\[yt\].*\?v=([\d\w]*)[^\[]\[\/yt\]/<iframe width=\"560\" height=\"315\" src="https:\/\/www.youtube.com\/embed\/$1" frameborder="0" allowfullscreen><\/iframe>/g;
-  };
   map {if ($content =~ /\[$_\]/){  
     $content =~ s/\[$_\]/\<$_\>/g;
     $content =~ s/\[\/$_\]/\<\/$_\>/g;
