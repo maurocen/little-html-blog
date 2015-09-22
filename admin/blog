@@ -93,12 +93,15 @@ sub interprete_content {
   if ($content =~ /\[yt\].*\?v=([\w\d]*)[^\[]\[\/yt\]/){
     $content =~ s/\[yt\].*\?v=([\d\w]*)[^\[]\[\/yt\]/<iframe width=\"560\" height=\"315\" src="https:\/\/www.youtube.com\/embed\/$1" frameborder="0" allowfullscreen><\/iframe>/g;
   };
-  if ($content =~ /\[align=\".*\"\].*\[\/align\]/){  
-    $content =~ s/\[align=\"(.*)\"\]([^\[]*)\[\/align\]/\<div align=\"$1\">$2\<\/div\>/g;
-  };
-  map {if ($content =~ /\[$_].*\[\/$_\]/){  
-    $content =~ s/\[$_\]([^\[]*)\[\/$_\]/\<$_\>$1\<\/$_\>/g;
+  map {if ($content =~ /\[$_\]/){  
+    $content =~ s/\[$_\]/\<$_\>/g;
+    $content =~ s/\[\/$_\]/\<\/$_\>/g;
   };} qw/b i u/;
+  if ($content =~ /\[align=\s*\"\w*\"\]/)
+  {
+  	$content =~ s/\[align=\s*\"(\w*)\"\]/<div align\=\"$1\">/g;
+  	$content =~ s/\[\/align\]/<\/div>/g;
+  }
   if ($content =~ /\[img].*\[\/img\]/){  
     $content =~ s/\[img\]([^\[]*)\[\/img\]/\<img src=\"$1"\>/g;
   };
