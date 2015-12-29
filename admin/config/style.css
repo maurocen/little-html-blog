@@ -7,7 +7,7 @@ h1 {
   font-family:verdana;
   font-size:300%;
   background-color: teal;
-  border-radius: 20px;
+
 }
 h1:hover {
   color: teal;
@@ -30,7 +30,6 @@ a.menu:hover {
   color: white;
   background-color: teal;
   border: 1px;
-  letter-spacing: 1px;
 }
 h6.motto:hover {
   letter-spacing: 2px;
@@ -42,7 +41,6 @@ h6.motto:hover {
 	border-bottom-width: 0px;
 	border-right-width: 3px;
   background-color: #eeeeee;
-  border-radius: 25px;
   height: 100%;
   vertical-align: top;
 }
@@ -50,12 +48,12 @@ h6.motto:hover {
 	text-align: left;
   text-decoration: none;
   color: white;
-  border-radius: 25px;
   background-color: teal;
   text-indent: 10px;
 }
 #header {
   height:15%;
+  margin-bottom: 50px;
 }
 #content {
   height:50%;

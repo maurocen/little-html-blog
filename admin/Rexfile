@@ -3,7 +3,6 @@ use Smart::Comments;
 use common::sense;
 use Config::Merge('CONFIG' => './config');
 use Config::Merge('POSTS' => './posts');
-use CONFIG;
 use Template;
 use Rex -feature => ['1.0'];
 
@@ -121,7 +120,7 @@ sub interprete_content {
 
 sub copy_css {
   file "../style.css", source => "config/style.css";
-  file "../logo.png", source => "files/logo.png";
+  #file "../logo.png", source => "files/logo.png";
 }
 
 # THIS IS A
