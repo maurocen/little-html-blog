@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>[% website.title %] - [% post.title%]</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<body>
+<FONT FACE="arial">
+<table cellpadding="5" width="100%" align="middle">
+<tr>
+    <td id="sidebar" width="15%" height="100%">
+  <iframe src="sidebar.html" height="100%" width="100%" frameborder="0"></iframe>
+  </td>
+  <td>
+    <div id="header">
+    	<h1 align="center" >[% website.title %]</h1>
+		<h6 class="motto" align="center"><i>[% website.motto %]</i></h6>
+		<HR size="4" width="75%"></HR></div>
+    <div id="content" style="height:60%">
+    	<h2 align="center">About this blog!</h2>
+    	This is version <text style="text-decoration: line-through">[% about.last_version %]</text> [% about.version %].<br>
+    	This version was released on [% about.release %].<p>
+    	<p></p>
+    	<h4>This blog was coded by:</h4>[% about.author %]
+    	[% IF about.modificators %]
+    	<br><h4>With modifications made by:</h4>
+    	[% FOREACH person IN about.modificators %]
+    	&#126;&#62; [% person %]<br>
+    	[% END %]
+    	[% END %]
+    	<h6 align="center"><a href="index.html">HOME</a></h6>
+    </div>	
+    <div id="footer">
+		<HR size="4" width="75%"></HR>
+		<p></p>
+		<h6 align="center">&copy; [% website.year %] [% website.owner %] - All rights reserved.<br>You can find a template for your post entries <a href="template.html">here</a>.</h6><br>
+	</div>
+  </td>
+</tr>
+</table>
+</FONT>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<base target="_parent">
+<div id="logo" align="center"><br><img src="logo.png"></div><br>
+    <div id="sidebar-element"><h5>Recent entries</h5></div>
+	  [% FOREACH elem IN config %]
+	    &#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li><br>
+	  [% END %]
+	  [% IF website.contact %]	
+	<div id="sidebar-element"><h5>Contact</h5></div>
+	  [% IF website.contact.mail %]	
+	  	&#126;&#62; <a class="menu" href="mailto:[% website.contact.mail %]">Mail us!</a><br>
+	  [% END %]
+	  [% IF website.contact.phone %]
+	  	&#126;&#62; <a class="menu" href="tel:[% website.contact.phone %]">Call us!</a>
+	  [% END %]
+	  [% END %]
+</base>
+</body>
+</html>

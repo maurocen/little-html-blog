@@ -1,38 +1,36 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>[% website.title %] - [% post.title%]</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic' rel='stylesheet' type='text/css'>
+  <title>[% website.title %]</title>
 </head>
 <body>
-<body>
-<FONT FACE="arial">
-<table cellpadding="5" width="100%" align="middle">
-<tr>
-  <td id="sidebar" width="12%" float="left">
-	<div id="logo" align="center"><br><img src="logo.png"></div><br>
-	<div id="sidebar-element"><h5>Recent entries</h5></div>
-	  [% FOREACH elem IN config %]
-	    &#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li><br>
-  	  [% END %]
-	  [% IF website.contact %]	
-	<div id="sidebar-element"><h5>Contact</h5></div>
-	  [% IF website.contact.mail %]	
-	  	&#126;&#62; <a class="menu" href="mailto:[% website.contact.mail %]">Mail us!</a><br>
-	  [% END %]
-	  [% IF website.contact.phone %]
-	  	&#126;&#62; <a class="menu" href="tel:[% website.contact.phone %]">Call us!</a>
-	  [% END %]
-	  [% END %]
-  </td>
-  <td>
-    <div id="header">
-      <h1 align="center" >[% website.title %]</h1>
-	  <h6 class="motto" align="center"><i>[% website.motto %]</i></h6>
-	  <HR size="4" width="75%"></HR></div>
-    <div id="content" style="height:60%">
-      <h3 align="center">Create your post</h3>
-	  <p></p>
-	  <div align="center"><textarea rows="12" cols="50" readonly="true" id="noresize">---
+  <div class="header">
+    <h1 class="title" >[% website.title %]</h1>
+    <h6 class="motto">[% website.motto %]</h6>
+  </div>
+
+  <div class="sidebar">
+    <div id="sidebar-element"><h5>Recent entries</h5></div>
+      [% FOREACH elem IN config %]
+        &#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li><br>
+      [% END %]
+      [% IF website.contact %]  
+    <div id="sidebar-element"><h5>Contact</h5></div>
+      [% IF website.contact.mail %] 
+        &#126;&#62; <a class="menu" href="mailto:[% website.contact.mail %]">Mail us!</a><br>
+      [% END %]
+      [% IF website.contact.phone %]
+        &#126;&#62; <a class="menu" href="tel:[% website.contact.phone %]">Call us!</a>
+      [% END %]
+      [% END %]
+  </div>
+
+  <div class="content">
+    <div class="content-title">Create your post</div>
+    <p></p>
+	  <div align="center"><textarea rows="13" cols="50" readonly="true" id="noresize">---
 title: [POST_NAME]
 author:
   name: [YOUR NAME]
@@ -43,26 +41,24 @@ content: [YOUR POST CONTENT IN HTML OR PLAIN TEXT]
 previous: [PREVIOUS_POST_NAME].html
 next: [NEXT_POST_NAME].html
 filename: [THIS_POST_NAME]
-...</textarea></div>
+...
+</textarea></div>
 		<br>
 		You can consider this a little template you should follow, saving the file as a YAML file in the <i>/admin/posts</i> folder.<br>
 		<h3 align="center">BE CAREFUL!</h3>
 		<ul><li>Don't forget to update <i>/admin/posts/recent.yml</i>, <i>/admin/posts/files.yml</i> and your latest post YAML files, as you will generate the post file but not the links for the rest of the page to link to it.</li>
 		<li>You may have noticed that previous and next require the html extension but filename doesn't, so it's important <u>you don't add the extension to filename</u>.</li>
 		<li>It's not really necessary to have the previous or the next camps if you're making the first or last post.</li>
+		<li>Don't forget the last empty line in the YAML file or the script won't be able to read it correctly, throwing an error (this took me months to notice).</li>
 		</ul>
 		<p>
 		This blog was made to be crazy stupid to use, so be careful, it needs to be done correctly for it to work.
 		<h6 align="center"><a href="index.html">HOME</a></h6>
-    </div>
-    <div id="footer">
-		<HR size="4" width="75%"></HR>
-		<p></p>
-		<h6 align="center">&copy; [% website.year %] [% website.owner %] - All rights reserved.<br><a href="about.html">About this blog</a></h6>
-	</div>
-  </td>
-</tr>
-</table>
-</FONT>
+  </div>
+
+  <div class="footer">
+    <h6 align="center">&copy; [% website.year %] [% website.owner %] - All rights reserved.<br><a href="about.html">About this blog</a></h6>
+  </div>
+
 </body>
 </html>
