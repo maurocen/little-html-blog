@@ -1,0 +1,129 @@
+use strict;
+use Smart::Comments;
+use common::sense;
+use Config::Merge('CONFIG' => './config');
+use Config::Merge('POSTS' => './posts');
+use Template;
+use Rex -feature => ['1.0'];
+
+task 'process', sub {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone("files");
+  foreach (values $files) {
+    say "Creating $_...";
+    my $config = {file => $_};
+    create_entry($config);
+    say "DONE";
+  };
+  create_index();
+  create_about();
+  create_template();
+  copy_css();
+};
+
+sub create_entry {
+  use CONFIG;
+  use POSTS;
+  my $params =shift;
+  my $postfile = $params->{file};
+  my $post = POSTS::clone($postfile);
+  $post->{content} = interprete_content($post->{content});
+  my $recentposts = POSTS::clone('recent');
+  my $site = CONFIG::clone('website');
+  my $template = Template->new({
+
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../posts",
+  });
+  my $postinfo = {post => $post, website => $site, config => $recentposts};
+  $template->process('post.html', $postinfo , "$post->{filename}.html");
+};
+
+sub create_index {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone('files');
+  my $site = CONFIG::clone('website');
+  say "Creating index.html ...";
+  my $template = Template->new({
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../",
+  });
+  my $index_config = {config => $files, website => $site};
+  $template->process('index.html', $index_config , "index.html");
+  say "DONE";
+};
+
+sub create_about {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone('files');
+  my $site = CONFIG::clone('website');
+  my $about = CONFIG::clone('about');
+  say "Creating about.html ...";
+  my $template = Template->new({
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../",
+  });
+  my $index_config = {config => $files, website => $site, about => $about};
+  $template->process('about.html', $index_config , "about.html");
+  say "DONE";
+};
+
+sub create_template {
+  use CONFIG;
+  use POSTS;
+  my $files = POSTS::clone('files');
+  my $site = CONFIG::clone('website');
+  say "Creating about.html ...";
+  my $template = Template->new({
+    INCLUDE_PATH => "./files",
+    OUTPUT_PATH  => "../",
+  });
+  my $index_config = {config => $files, website => $site};
+  $template->process('template.html', $index_config , "template.html");
+  say "DONE";
+};
+
+sub interprete_content {
+  my $content = shift;
+  #---- BOLD ITALIC UNDERLINE ----#
+  map {if ($content =~ /\[$_\]/){  
+    $content =~ s/\[$_\]/\<$_\>/g;
+    $content =~ s/\[\/$_\]/\<\/$_\>/g;
+  };} qw/b i u/;
+  #---- ALIGNMENT ----#
+  if ($content =~ /\[align=\s*\"\w*\"\]/)
+  {
+  	$content =~ s/\[align=\s*\"(\w*)\"\]/<div align\=\"$1\">/g;
+  	$content =~ s/\[\/align\]/<\/div>/g;
+  }
+  #---- IMAGES ----#
+  if ($content =~ /\[img].*\[\/img\]/){  
+    $content =~ s/\[img\]([^\[]*)\[\/img\]/\<img src=\"$1"\>/g;
+  };
+  #---- URL LINKING ----#
+  if ($content =~ /\[url=\".*\"\].*\[\/url\]/) {
+    $content =~ s/\[url=\"(.*)\"\]([^\[]*)\[\/url\]/\<a href=\"$1\">$2\<\/a\>/g;
+  }
+  #---- NEWLINE ----#
+  if ($content =~ /\[n\]/) {
+    $content =~ s/\[n\]/<br>/g;
+  };
+  #---- YOUTUBE ----#
+  if ($content =~ /\[yt\]/) {
+    $content =~ s/\[yt\]([^[]*)\[\/yt]/<iframe width="560" height="315" src="https:\/\/www.youtube.com\/embed\/$1" frameborder="0" allowfullscreen><\/iframe>/g;
+  };
+  return $content;
+};
+
+sub copy_css {
+  file "../style.css", source => "config/style.css";
+  #file "../logo.png", source => "files/logo.png";
+}
+
+# THIS IS A
+# Little REX/HTML blog
+# AND
+# Mauro Centurion did this, but you can feel free to modify this code!
