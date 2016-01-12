@@ -1,0 +1,68 @@
+body {
+  background: #E9E9E9;
+  margin: 0px;
+  overflow: hidden;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.header {
+  background: #FF9900;
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 10px;
+  border: 1px solid #BCBCBC;
+  box-shadow: 2px 2px 2px #C0C0C0;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.motto {
+  color: #ffffff;
+}
+
+.sidebar {
+  float:left;
+  width: 13%;
+  padding: 3px;
+  background: #FFFFFF;
+  box-shadow: 1px 1px 10px #BCBCBC;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.content-title {
+  background: #3299BB;
+  font-size: 40px;
+  text-align: center;
+  font-weight: bolder;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 10px #000000;
+}
+
+.content {
+  float:left;
+  margin-left: 10px;
+  width: 84%;
+  padding: 3px;
+  background: #FFFFFF;
+  box-shadow: 1px 1px 10px #BCBCBC;
+  border-radius: 3px;
+}
+
+.footer {
+  width: 100%;
+  float:left;
+}
+
+#sidebar-element {
+  background: #FF9900;
+  padding-left: 5px;
+  border-radius: 3px;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 3px #000000;
+}
