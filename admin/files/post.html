@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
   <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300italic' rel='stylesheet' type='text/css'>
   <title>[% website.title %] - [% post.title %]</title>
 </head>
@@ -14,7 +14,7 @@
   <div class="sidebar">
     <div id="sidebar-element"><h5>Recent entries</h5></div>
       [% FOREACH elem IN config %]
-        &#126;&#62; <a class="menu" href="posts/[% elem %].html">[% elem %]</a></li><br>
+        &#126;&#62; <a class="menu" href="[% elem %].html">[% elem %]</a></li><br>
       [% END %]
       [% IF website.contact %]  
     <div id="sidebar-element"><h5>Contact</h5></div>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="footer">
-    <h6 align="center">&copy; [% website.year %] [% website.owner %] - All rights reserved.<br><a href="about.html">About this blog</a></h6>
+    <h6 align="center">&copy; [% website.year %] [% website.owner %] - All rights reserved.<br><a href="../about.html">About this blog</a></h6>
   </div>
 
 </body>
