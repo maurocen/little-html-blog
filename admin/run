@@ -1,0 +1,9 @@
+#!/bin/sh
+clear
+echo 'Starting'
+sudo rex process
+if ((ls ../ | grep 'style.css') > /dev/null) then
+echo '\n-------------------------------------\n|Everything seems to have gone right|\n-------------------------------------\n'
+exit 1;
+fi
+echo '\n----------------------\n|Something went wrong|\n----------------------\n'
