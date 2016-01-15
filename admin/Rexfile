@@ -16,10 +16,19 @@ task 'process', sub {
     create_entry($config);
     say "DONE";
   };
+  delete_previous();
   create_index();
   create_about();
   create_template();
   copy_css();
+};
+
+sub delete_previous {
+	map {
+		say "Deleting previous $_ ...";
+		run "rm -f ../$_";
+		say "DONE";
+	} qw/index.html template.html about.html style.css/;
 };
 
 sub create_entry {
@@ -76,7 +85,7 @@ sub create_template {
   use POSTS;
   my $files = POSTS::clone('files');
   my $site = CONFIG::clone('website');
-  say "Creating about.html ...";
+  say "Creating template.html ...";
   my $template = Template->new({
     INCLUDE_PATH => "./files",
     OUTPUT_PATH  => "../",
@@ -119,9 +128,10 @@ sub interprete_content {
 };
 
 sub copy_css {
-  file "../style.css", source => "config/style.css";
-  #file "../logo.png", source => "files/logo.png";
-}
+	say "Copying style.css ...";
+	file "../style.css", source => "config/style.css";
+	say "DONE";
+};
 
 # THIS IS A
 # Little REX/HTML blog
